@@ -7,9 +7,9 @@ Game.prototype.init = function(){
 }
 
 Game.prototype.start = function(){
-    this.init();
+    PoolGame.init();
 
-    this.mainLoop();
+    PoolGame.mainLoop();
 }
 
 Game.prototype.mainLoop = function(){

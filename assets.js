@@ -12,7 +12,7 @@ function assetsLoadingLoop(callback){
 }
 
 // download the image
-function loadAssest(callback){
+function loadAssets(callback){
 
     // access the image in the folder
     function loadSprite(fileName){
