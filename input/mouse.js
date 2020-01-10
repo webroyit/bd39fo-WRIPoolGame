@@ -1,6 +1,6 @@
 function handleMouseMove(e){
     let x = e.pageX;
-    let y = y.pageY;
+    let y = e.pageY;
 
     Mouse.position = new Vertor2(x, y);
 }
@@ -29,6 +29,21 @@ function handleMouseDown(e){
     }
 }
 
+function handleMouseUp(e){
+    handleMouseMove(e);
+
+    // check the attribute on the event
+    if(e.which === 1){
+        Mouse.left.down = false;
+    }
+    else if(e.which === 2){
+        Mouse.middle.down = false;
+    }
+    else if(e.which === 3){
+        Mouse.right.down = false;
+    }
+}
+
 function MouseHandler(){
     this.left = new ButtonState();
     this.middle = new ButtonState();
@@ -39,6 +54,12 @@ function MouseHandler(){
     document.onmousemove = handleMouseMove;
     document.onmousedown = handleMouseDown;
     document.onmouseup = handleMouseUp;
+}
+
+MouseHandler.prototype.reset = function(){
+    this.left.pressed = false;
+    this.middle.pressed = false;
+    this.right.pressed = false;
 }
 
 let Mouse = new MouseHandler();
