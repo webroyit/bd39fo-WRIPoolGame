@@ -2,7 +2,7 @@ function handleMouseMove(e){
     let x = e.pageX;
     let y = e.pageY;
 
-    Mouse.position = new Vertor2(x, y);
+    Mouse.position = new Vector2(x, y);
 }
 
 function handleMouseDown(e){
