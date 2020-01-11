@@ -1,12 +1,18 @@
+const DELTA = 1/100;    // how often to update on each iteration
+
 // update the game
 function GameWorld(){
     this.whiteBall = new Ball(new Vector2(413, 413));
-    this.stick = new Stick(new Vector2(413, 413), this.whiteBall.shoot);
+    this.stick = new Stick(
+        new Vector2(413, 413),
+        // prevent losing reference to the white ball
+        this.whiteBall.shoot.bind(this.whiteBall)
+    );
 }
 
 GameWorld.prototype.update = function(){
     this.stick.update();
-    this.whiteBall.update();
+    this.whiteBall.update(DELTA);
 }
 
 // display images
