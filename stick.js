@@ -3,6 +3,7 @@ const STICK_ORIGIN = new Vector2(970, 11);
 function Stick(position){
     this.position = position;
     this.rotation = 0;
+    this.origin = STICK_ORIGIN.copy();
 }
 
 Stick.prototype.update = function(){
@@ -10,7 +11,7 @@ Stick.prototype.update = function(){
 }
 
 Stick.prototype.draw = function(){
-    Canvas.drawImage(sprites.stick, this.position, STICK_ORIGIN, this.rotation);
+    Canvas.drawImage(sprites.stick, this.position, this.origin, this.rotation);
 }
 
 Stick.prototype.updateRotation = function(){
