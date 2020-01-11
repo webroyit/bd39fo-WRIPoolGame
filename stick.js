@@ -1,15 +1,20 @@
 const STICK_ORIGIN = new Vector2(970, 11);
+const STICK_SHOT_ORIGIN = new Vector2(950, 11);
 
-function Stick(position){
+function Stick(position, onShoot){
     this.position = position;
     this.rotation = 0;
     this.origin = STICK_ORIGIN.copy();
     this.power = 0;
+    this.onShoot = onShoot;
 }
 
 Stick.prototype.update = function(){
     if(Mouse.left.down){
         this.increasePower();
+    }
+    else if(this.power > 0){
+        this.shoot();
     }
 
     this.updateRotation();
@@ -31,4 +36,10 @@ Stick.prototype.updateRotation = function(){
 Stick.prototype.increasePower = function(){
     this.power += 100;      // how hard to hit the ball
     this.origin.x += 5;     // move the stick away from white ball
+}
+
+Stick.prototype.shoot = function(){
+    this.onShoot(this.power, this.rotation);
+    this.power = 0;
+    this.origin = STICK_SHOT_ORIGIN.copy();
 }
