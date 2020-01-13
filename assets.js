@@ -38,3 +38,20 @@ function loadAssets(callback){
 
     assetsLoadingLoop(callback);
 }
+
+function getBallSpriteByColor(color){
+    switch(color){
+        case COLOR.RED:
+            return sprites.redBall;
+            break;
+        case COLOR.YELLOW:
+            return sprites.yellowBall;
+            break;
+        case COLOR.BLACK:
+            return sprites.blackBall;
+            break;
+        case COLOR.WHITE:
+            return sprites.whiteBall;
+            break;
+    }
+}

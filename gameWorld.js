@@ -2,7 +2,7 @@ const DELTA = 1/100;    // how often to update on each iteration
 
 // update the game
 function GameWorld(){
-    this.whiteBall = new Ball(new Vector2(413, 413));
+    this.whiteBall = new Ball(new Vector2(413, 413), COLOR.WHITE);
     this.stick = new Stick(
         new Vector2(413, 413),
         // prevent losing reference to the white ball
