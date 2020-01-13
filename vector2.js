@@ -15,3 +15,7 @@ Vector2.prototype.addTo = function(vector){
 Vector2.prototype.mult = function(scaler){
     return new Vector2(this.x * scaler, this.y * scaler);
 }
+
+Vector2.prototype.length = function(){
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+}
