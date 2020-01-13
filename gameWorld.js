@@ -53,5 +53,14 @@ GameWorld.prototype.draw = function(){
 }
 
 GameWorld.prototype.ballsMoving = function(){
-    return this.whiteBall.moving;
+    let ballsMoving = false;
+
+    for(let i = 0; i < this.balls.length; i++){
+        if(this.balls[i].moving){
+            ballsMoving = true;
+            break;
+        }
+    }
+
+    return ballsMoving;
 }
