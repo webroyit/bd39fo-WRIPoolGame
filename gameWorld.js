@@ -30,6 +30,8 @@ function GameWorld(){
 }
 
 GameWorld.prototype.update = function(){
+    this.handleCollisions();
+
     this.stick.update();
     
     for(let i = 0; i < this.balls.length; i++){
@@ -38,6 +40,16 @@ GameWorld.prototype.update = function(){
 
     if(!this.ballsMoving() && this.stick.shot){
         this.stick.reposition(this.whiteBall.position);
+    }
+}
+
+GameWorld.prototype.handleCollisions = function(){
+    for(let i = 0; i < this.balls.length; i++){
+        for(let j = i + 1; j < this.balls.length; j++){
+            const firstBall = this.balls[i];
+            const secondBall = this.balls[j];
+            firstBall.collideWith(secondBall);
+        }
     }
 }
 
