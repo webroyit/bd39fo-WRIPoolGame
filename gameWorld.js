@@ -1,4 +1,4 @@
-const DELTA = 1/100;    // how often to update on each iteration
+const DELTA = 1/175;    // how often to update on each iteration
 
 // update the game
 function GameWorld(){
