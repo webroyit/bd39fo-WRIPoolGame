@@ -30,7 +30,7 @@ Ball.prototype.shoot = function(power, rotation){
     this.moving = true;
 }
 
-Ball.prototype.collideWith = function(ball){
+Ball.prototype.collideWithBall = function(ball){
     // normal vector
     const n = this.position.subtract(ball.position);
 
@@ -76,4 +76,17 @@ Ball.prototype.collideWith = function(ball){
 
     this.moving = true;
     ball.moving = true;
+}
+
+Ball.prototype.collideWithTable = function(table){
+
+}
+
+Ball.prototype.collideWith = function(object){
+    if(object instanceof Ball){
+        this.collideWithBall(object);
+    }
+    else{
+        this.collideWithTable(object);
+    }
 }
