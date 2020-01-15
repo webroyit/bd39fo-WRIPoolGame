@@ -1,5 +1,6 @@
 const STICK_ORIGIN = new Vector2(970, 11);
 const STICK_SHOT_ORIGIN = new Vector2(950, 11);
+const MAX_POWER = 7650;
 
 function Stick(position, onShoot){
     this.position = position;
@@ -35,7 +36,11 @@ Stick.prototype.updateRotation = function(){
 }
 
 Stick.prototype.increasePower = function(){
-    this.power += 100;      // how hard to hit the ball
+    if(this.power > MAX_POWER){
+        return;
+    }
+
+    this.power += 120;      // how hard to hit the ball
     this.origin.x += 5;     // move the stick away from white ball
 }
 
