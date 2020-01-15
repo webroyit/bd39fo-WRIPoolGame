@@ -40,6 +40,13 @@ Ball.prototype.collideWith = function(ball){
         return;
     }
 
+    // minimum translation distance
+    const mtd = n.mult((BALL_DIAMETER - dist) / dist);
+
+    // push and pull balls apart
+    this.position = this.position.add(mtd.mult(1 / 2));
+    ball.position = ball.position.subtract(mtd.mult(1 / 2));
+
     // unit normal vector
     const un = n.mult(1 / n.length());
 
