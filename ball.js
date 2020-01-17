@@ -1,5 +1,6 @@
 const BALL_ORIGIN = new Vector2(25, 25);
 const BALL_DIAMETER = 38;
+const BALL_RADIUS = BALL_DIAMETER / 2;
 
 function Ball(position, color){
     this.position = position;
@@ -79,7 +80,40 @@ Ball.prototype.collideWithBall = function(ball){
 }
 
 Ball.prototype.collideWithTable = function(table){
+    if(!this.moving){
+        return;
+    }
 
+    let collided = false;
+
+    // check the top side of the table
+    if(this.position.y <= table.TopY + BALL_RADIUS){
+        this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
+        collided = true;
+    }
+
+    // check the right side of the table
+    if(this.position.x >= table.RightX - BALL_RADIUS){
+        this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
+        collided = true;
+    }
+
+    // check the bottom side of the table
+    if(this.position.y >= table.BottomY - BALL_RADIUS){
+        this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
+        collided = true;
+    }
+
+    // check the left side of the table
+    if(this.position.x <= table.LeftX + BALL_RADIUS){
+        this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
+        collided = true;
+    }
+
+    // decrease power when hitting the table
+    if(collided){
+        this.velocity = this.velocity.mult(0.98);
+    }
 }
 
 Ball.prototype.collideWith = function(object){
