@@ -88,24 +88,28 @@ Ball.prototype.collideWithTable = function(table){
 
     // check the top side of the table
     if(this.position.y <= table.TopY + BALL_RADIUS){
+        this.position.y = table.TopY + BALL_RADIUS;
         this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
         collided = true;
     }
 
     // check the right side of the table
     if(this.position.x >= table.RightX - BALL_RADIUS){
+        this.position.x = table.RightX - BALL_RADIUS;
         this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
         collided = true;
     }
 
     // check the bottom side of the table
     if(this.position.y >= table.BottomY - BALL_RADIUS){
+        this.position.y = table.BottomY - BALL_RADIUS;
         this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
         collided = true;
     }
 
     // check the left side of the table
     if(this.position.x <= table.LeftX + BALL_RADIUS){
+        this.position.x = table.LeftX + BALL_RADIUS;
         this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
         collided = true;
     }
