@@ -8,9 +8,14 @@ function Ball(position, color){
     this.moving = false;
     this.sprite = getBallSpriteByColor(color);
     this.color = color;
+    this.visible = true;
 }
 
 Ball.prototype.update = function(delta){
+    if(!this.visible){
+        return;
+    }
+
     this.position.addTo(this.velocity.mult(delta));
 
     // friction
@@ -23,6 +28,10 @@ Ball.prototype.update = function(delta){
 }
 
 Ball.prototype.draw = function(){
+    if(!this.visible){
+        return;
+    }
+
     Canvas.drawImage(this.sprite, this.position, BALL_ORIGIN);
 }
 
@@ -33,6 +42,10 @@ Ball.prototype.shoot = function(power, rotation){
 }
 
 Ball.prototype.collideWithBall = function(ball){
+    if(!this.visible || !ball.visible){
+        return;
+    }
+
     // normal vector
     const n = this.position.subtract(ball.position);
 
@@ -80,8 +93,22 @@ Ball.prototype.collideWithBall = function(ball){
     ball.moving = true;
 }
 
+Ball.prototype.handleBallInPocket = function(){
+    // some() return true or false
+    let inPocket = CONSTANTS.pockets.some(pocket => {
+        return this.position.distFrom(pocket) < CONSTANTS.pocketRadius;
+    })
+
+    if(!inPocket){
+        return;
+    }
+
+    this.visible = false;
+    this.moving = false;
+}
+
 Ball.prototype.collideWithTable = function(table){
-    if(!this.moving){
+    if(!this.moving || !this.visible){
         return;
     }
 

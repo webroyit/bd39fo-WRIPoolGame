@@ -36,6 +36,7 @@ GameWorld.prototype.update = function(){
 
 GameWorld.prototype.handleCollisions = function(){
     for(let i = 0; i < this.balls.length; i++){
+        this.balls[i].handleBallInPocket();
         this.balls[i].collideWith(this.table);
         
         for(let j = i + 1; j < this.balls.length; j++){
