@@ -16,5 +16,15 @@ const CONSTANTS = {
         [new Vector2(1162, 452), COLOR.RED],        // 14
         [new Vector2(1162, 491), COLOR.YELLOW],     // 15
         [new Vector2(413, 413), COLOR.WHITE],       // 16
+    ],
+
+    pocketRadius: 46,
+    pockets: [
+        new Vector2(750, 32),
+        new Vector2(750, 794),
+        new Vector2(62, 62),
+        new Vector2(1435, 62),
+        new Vector2(62, 762),
+        new Vector2(1435, 762)
     ]
 }
