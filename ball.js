@@ -7,6 +7,7 @@ function Ball(position, color){
     this.velocity = new Vector2();
     this.moving = false;
     this.sprite = getBallSpriteByColor(color);
+    this.color = color;
 }
 
 Ball.prototype.update = function(delta){
